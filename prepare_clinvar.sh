@@ -62,9 +62,28 @@ bcftools norm \
 echo "Indexing normalized VCF..."
 tabix -p vcf clinvar.norm.vcf.gz
 
-# ----------------------------------------
-# Completion Message
-# ----------------------------------------
 echo "ClinVar VCF normalization complete!"
 echo "Output VCF: clinvar.norm.vcf.gz"
 echo "Reference used: GRCh38_no_chr.fna (with manually added contigs)"
+
+# ----------------------------------------
+# Step 8: SnpEff Database Download
+# ----------------------------------------
+echo "Downloading SnpEff database for GRCh38.p14..."
+cd ..
+mkdir -p snpEff && cd snpEff
+java -jar snpEff.jar download GRCh38.p14
+
+# ----------------------------------------
+# Step 9: SnpEff Annotation
+# ----------------------------------------
+echo "Annotating normalized VCF using SnpEff..."
+cd ../ClinVar_GRCh38
+java -Xmx8g -jar ../snpEff/snpEff.jar GRCh38.p14 clinvar.norm.vcf.gz > clinvar.ann.vcf
+
+# (Optional) Compress and index the annotated file
+bgzip -f clinvar.ann.vcf
+tabix -p vcf clinvar.ann.vcf.gz
+
+echo "ClinVar VCF normalization and annotation complete!"
+echo "Output: clinvar.ann.vcf.gz"
