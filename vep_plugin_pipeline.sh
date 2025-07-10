@@ -97,4 +97,4 @@ tabix -s 1 -b 2 -e 2 PrimateAI_scores_v0.2_GRCh38_sorted.tsv.bgz
 bgzip /Users/sharmishtaganesh/Desktop/SEM2/ML_Sem2Proj/SnpEff_Output/clinvar.ann.vcf
 tabix -p vcf /Users/sharmishtaganesh/Desktop/SEM2/ML_Sem2Proj/SnpEff_Output/clinvar.ann.vcf.gz
 
-echo "✅ All plugin preparation steps completed successfully."
+echo "All plugin preparation steps completed successfully."
