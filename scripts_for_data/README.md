@@ -51,7 +51,7 @@ Run the following script to:
 
 Run the following script to process and compress the ClinVar VCF file for use with VEP.
 
-```
+```bash
 ./prepare_clinvar.sh
 ```
 
@@ -61,7 +61,7 @@ Make sure to modify the script with the correct input path to your ClinVar file.
 
 Run the final annotation script that invokes the Docker container with all configured plugins.
 
-```
+```bash
 ./vep_annotation_pipeline.sh
 ```
 
@@ -76,20 +76,18 @@ Run the final annotation script that invokes the Docker container with all confi
 ## Output
 
 - The final annotated VCF will be output in compressed .vcf.gz format
-- Intermediate files (cache, plugin data) are stored in ```
-  ~/.vep/
+- Intermediate files (cache, plugin data) are stored in
+  ```bash
+   ~/.vep/
   ```
-
    and plugin folders
 
 ## Additional Filtering
 
 For additional filtering of variants based on clinical significance, review status, and other criteria, you can run the following script:
-
-```
+```bash
 ./filter_variants.sh
 ```
-
 This script will filter the variants and generate a summary CSV file.
 
 ## Conclusion
