@@ -1,13 +1,13 @@
 #!/bin/bash
 
-##############################################
+
 # Variant Annotation Pipeline using VEP (Docker)
 # Author: Sharmishta
 # Date: July 2025
 # Purpose: Annotate ClinVar VCF using Ensembl VEP via Docker
-##############################################
 
-# ==== Step 1: Set Variables ====
+
+# Step 1: Set Variables
 
 # Path to your VCF file
 INPUT_VCF="clinvar.ann.vcf"
@@ -17,13 +17,13 @@ VEP_OUTPUT_DIR="/project/ML_Sem2Proj/SnpEff_Output"
 DOCKER_VEP_IMG="ensemblorg/ensembl-vep"
 CACHE_DIR="$HOME/.vep"
 
-# ==== Step 2: Prepare VEP Data (once) ====
+# Step 2: Prepare VEP Data (once) 
 # These files are assumed to already be downloaded to ~/.vep
 # - Cache: homo_sapiens/114_GRCh38
 # - FASTA: Homo_sapiens.GRCh38.dna.toplevel.fa.gz
 # - Plugins: AlphaMissense, BayesDel, PrimateAI, REVEL
 
-# ==== Step 3: Split VCF File into 1GB Chunks ====
+# Step 3: Split VCF File into 1GB Chunks 
 
 echo "Splitting large VCF into chunks of 1GB..."
 
@@ -47,7 +47,7 @@ done
 rm header.vcf
 echo "VCF chunks created, compressed, and indexed."
 
-# ==== Step 4: Run VEP via Docker for Each Chunk ====
+# Step 4: Run VEP via Docker for Each Chunk
 
 echo "Running VEP annotation on each VCF chunk..."
 
@@ -83,16 +83,12 @@ done
 
 echo "All chunks annotated and indexed."
 
-# ==== Optional: Merge annotated files later using bcftools ====
+# Optional: Merge annotated files later using bcftools 
 # bcftools concat -a *.vep.vcf.gz -Oz -o merged_annotated.vcf.gz
 
-##############################################
 # END OF PIPELINE
-##############################################
 
-# =============================================
 # Summary of Files and Their Purposes
-# =============================================
 # | File/Directory                                               | Purpose                                       |
 # |--------------------------------------------------------------|-----------------------------------------------|
 # | `clinvar.ann.vcf`                                            | Input VCF from SnpEff                         |
@@ -103,5 +99,4 @@ echo "All chunks annotated and indexed."
 # | `bayesdel_38.sorted.bed.gz`                                  | Plugin file for BayesDel (sorted BED)         |
 # | `PrimateAI_scores_v0.2_GRCh38_sorted.tsv.bgz`                | PrimateAI plugin file (bgzipped, tabix-indexed)|
 # | `new_tabbed_revel.tsv.gz`                                    | REVEL plugin file (tabix-indexed TSV)         |
-# =============================================
 
