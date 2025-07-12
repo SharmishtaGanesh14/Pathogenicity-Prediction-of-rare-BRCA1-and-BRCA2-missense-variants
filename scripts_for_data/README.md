@@ -1,4 +1,3 @@
-```
 # VEP Annotation Pipeline
 
 This repository contains scripts to set up and run the Ensembl Variant Effect Predictor (VEP) with multiple plugins for annotating ClinVar variants using the GRCh38 reference genome.
