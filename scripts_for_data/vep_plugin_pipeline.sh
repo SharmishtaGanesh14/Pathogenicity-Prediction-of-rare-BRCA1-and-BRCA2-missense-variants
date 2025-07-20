@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Variant Annotation Pipeline - plugin download
+# Author: Sharmishta
+# Date: 20 July 2025 [Updated]
+# Purpose: Download the datasets for the plugins and download docker to use vep locally on the machine
+
 set -e  # Exit if a command fails
 
 # Set base directory on external drive
