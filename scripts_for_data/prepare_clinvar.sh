@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Author: Sharmishta Ganesh
-# Date: 2025-07-08
-# Description: This script downloads the latest ClinVar VCF for GRCh38 (RefSeq),
-#              processes the GRCh38 reference genome (hs38d1 full + patch),
-#              removes unwanted 'chr' prefixes, ensures contig name compatibility,
-#              and finally normalizes the variants using bcftools.
+# Variant Annotation Pipeline using VEP (Docker)
+# Author: Sharmishta
+# Date: 8 July 2025
+# Purpose: This script downloads the latest ClinVar VCF for GRCh38 (RefSeq),
+# processes the GRCh38 reference genome (hs38d1 full + patch),
+# removes unwanted 'chr' prefixes, ensures contig name compatibility,
+# and finally normalizes the variants using bcftools.
 
 set -e  # Exit on any command failure
 
